@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SL Tour Guide</string>
+    <string name="title_activity_view_tour">ViewTour</string>
 </resources>
