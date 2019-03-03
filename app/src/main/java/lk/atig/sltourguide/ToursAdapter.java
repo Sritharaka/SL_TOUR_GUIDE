@@ -7,7 +7,6 @@ package lk.atig.sltourguide;
 
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,18 +14,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.FieldPosition;
 import java.util.List;
 
 public class ToursAdapter extends RecyclerView.Adapter<ToursAdapter.ToursViewHolder> {
 
 
      private Context mtcx;
-     private List<Tours> ToursList;
+    private List<Tour> tourList;
 
-    public ToursAdapter(Context mtcx, List<Tours> toursList) {
+    public ToursAdapter(Context mtcx, List<Tour> tourList) {
         this.mtcx = mtcx;
-        ToursList = toursList;
+        this.tourList = tourList;
     }
 
 
@@ -40,21 +38,21 @@ public class ToursAdapter extends RecyclerView.Adapter<ToursAdapter.ToursViewHol
     @Override
     public void onBindViewHolder(ToursViewHolder toursViewHolder, int i) {
 
-     Tours tours = ToursList.get(i);
+        Tour tour = tourList.get(i);
 
-     toursViewHolder.textViewTitle.setText(tours.getTitl());
-     toursViewHolder.textViewDesc.setText(tours.getShortdesc());
-     toursViewHolder.textViewRating.setText(String.valueOf(tours.getRating()));
-     toursViewHolder.textViewPrice.setText(String.valueOf(tours.getPrice()));
+        toursViewHolder.textViewTitle.setText(tour.getTitle());
+        toursViewHolder.textViewDesc.setText(tour.getShortdesc());
+        toursViewHolder.textViewRating.setText(String.valueOf(tour.getRating()));
+        toursViewHolder.textViewPrice.setText(String.valueOf(tour.getPrice()));
 
-     toursViewHolder.imageView.setImageDrawable(mtcx.getResources().getDrawable(tours.getImage()));
+        toursViewHolder.imageView.setImageDrawable(mtcx.getResources().getDrawable(tour.getImage()));
 
 
     }
 
     @Override
     public int getItemCount() {
-        return ToursList.size();
+        return tourList.size();
     }
 
     class ToursViewHolder extends RecyclerView.ViewHolder {

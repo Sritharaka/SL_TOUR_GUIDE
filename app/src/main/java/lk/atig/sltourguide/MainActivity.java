@@ -13,22 +13,24 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ToursAdapter adapter;
 
-    List<Tours> toursList;
+    List<Tour> tourList;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        db = new DatabaseHelper(this);
 
-        toursList = new ArrayList<>();
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        tourList = new ArrayList<>();
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         //adding some items to our list
-        toursList.add(
-                new Tours(
+        db.insertTour(
+                new Tour(
                         1,
                         "Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra)",
                         "13.3 inch, Silver, 1.35 kg",
@@ -36,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
                         60000,
                         R.drawable.yala));
 
-        toursList.add(
-                new Tours(
+        db.insertTour(
+                new Tour(
                         1,
                         "Dell Inspiron 7000 Core i5 7th Gen - (8 GB/1 TB HDD/Windows 10 Home)",
                         "14 inch, Gray, 1.659 kg",
@@ -45,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
                         60000,
                         R.drawable.kandy));
 
-        toursList.add(
-                new Tours(
+        db.insertTour(
+                new Tour(
                         1,
                         "Microsoft Surface Pro 4 Core m3 6th Gen - (4 GB/128 GB SSD/Windows 10)",
                         "13.3 inch, Silver, 1.35 kg",
@@ -54,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
                         60000,
                         R.drawable.singha));
 
+        tourList.addAll(db.getAllTours());
+
         //creating recyclerview adapter
-        ToursAdapter adapter = new ToursAdapter(this, toursList);
+        ToursAdapter adapter = new ToursAdapter(this, tourList);
 
         //setting adapter to recyclerview
         recyclerView.setAdapter(adapter);
