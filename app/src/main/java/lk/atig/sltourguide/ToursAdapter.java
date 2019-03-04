@@ -77,7 +77,7 @@ public class ToursAdapter extends RecyclerView.Adapter<ToursAdapter.ToursViewHol
         @Override
         public void onClick(View view) {
             if (view instanceof ImageView) {
-                listener.OnTourClicked(id);
+                listener.OnTourClicked(this.getAdapterPosition());
             }
         }
     }

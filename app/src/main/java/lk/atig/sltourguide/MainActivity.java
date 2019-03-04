@@ -52,9 +52,15 @@ public class MainActivity extends AppCompatActivity {
         //creating recyclerview adapter
         adapter = new ToursAdapter(this, tourList, new TourItemClickListener() {
             @Override
-            public void OnTourClicked(int id) {
+            public void OnTourClicked(int position) {
                 Intent intent = new Intent(MainActivity.this, ViewTour.class);
-                intent.putExtra(Tour.COLUMN_ID, id);
+                Tour tour = tourList.get(position);
+//                intent.putExtra(Tour.COLUMN_ID, id);
+                intent.putExtra("title", tour.getTitle());
+                intent.putExtra("description", tour.getShortdesc());
+                intent.putExtra("rate", tour.getRating());
+                intent.putExtra("price", tour.getPrice());
+                intent.putExtra("image", tour.getImage());
                 startActivity(intent);
             }
         });
