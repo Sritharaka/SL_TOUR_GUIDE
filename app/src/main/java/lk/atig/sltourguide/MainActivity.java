@@ -55,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
             public void OnTourClicked(int position) {
                 Intent intent = new Intent(MainActivity.this, ViewTour.class);
                 Tour tour = tourList.get(position);
-//                intent.putExtra(Tour.COLUMN_ID, id);
-                intent.putExtra("title", tour.getTitle());
-                intent.putExtra("description", tour.getShortdesc());
-                intent.putExtra("rate", tour.getRating());
-                intent.putExtra("price", tour.getPrice());
-                intent.putExtra("image", tour.getImage());
+                intent.putExtra(Tour.COLUMN_ID, tour.getId());
+                intent.putExtra(Tour.COLUMN_TITLE, tour.getTitle());
+                intent.putExtra(Tour.COLUMN_SHORT_DESCRIPTION, tour.getShortdesc());
+                intent.putExtra(Tour.COLUMN_RATING, tour.getRating());
+                intent.putExtra(Tour.COLUMN_PRICE, tour.getPrice());
+                intent.putExtra(Tour.COLUMN_IMAGE, tour.getImage());
                 startActivity(intent);
             }
         });

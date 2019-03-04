@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/activity_add_tour_layout">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

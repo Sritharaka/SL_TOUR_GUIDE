@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,7 @@ public class AddTour extends AppCompatActivity {
         textViewRating = findViewById(R.id.textViewRating);
         textViewPrice = findViewById(R.id.textViewPrice);
 
+
         db = new DatabaseHelper(this);
 
 
@@ -40,7 +42,7 @@ public class AddTour extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Added One Tour", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
                 db.insertTour(
